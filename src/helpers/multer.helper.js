@@ -20,7 +20,7 @@ const Upload = (req, res, next) => {
 
   upload(req, res, (err) => {
     if (err) {
-      res.status(500).send(`Unknown error: ${err.message}`);
+      res.status(400).send({ code: 400, message: err.message });
     } else {
       next();
     }

@@ -6,6 +6,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import fileRouter from './routes';
 import ErrorHandler from './middlewares/errorHandler.middleware';
+// eslint-disable-next-line no-unused-vars
+import sequelize from './database/config/db';
 
 const app = express();
 dotenv.config();
@@ -18,16 +20,17 @@ const { PORT } = process.env;
 //     saveUninitialized: false,
 //   }),
 // );
-app.use(cors());
-app.use(bodyParser.json());
+
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 // passport initialize
 // app.use(passport.initialize());
 // app.use(passport.session());
+app.use(cors());
+app.use(bodyParser.json());
 app.use('/', fileRouter);
 app.use(ErrorHandler);
 
 app.listen(PORT, () => {
-  console.log('server running on', PORT);
+  console.log('server running ojn', PORT);
 });
